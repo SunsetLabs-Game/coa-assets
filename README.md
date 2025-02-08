@@ -13,6 +13,8 @@ The main token contract is ERC1155. Here's a recommended standard,
 
 ### **Fungible Token IDs** (Lower 128-bit ID)
 
+Lower 128-bit ID, higher 128 bits all set to `0`,
+
 | Token ID (Hex) | Name            | Description                                | Use Case      |
 |---------------|----------------|--------------------------------------------|-----------------|
 | `0x1`        | Credits          | Primary in-game currency               | Trading, purchases |
@@ -26,7 +28,9 @@ The main token contract is ERC1155. Here's a recommended standard,
 * For example, let's say `0x1` is for weapons, and I have weapon number `5`. This would look like I have `1` token of type `0x100000000000000000000000000000005`
 * John could have gloves number 5, if glove type is set to be `0x25`. This would look like John has `1` token of type `0x2500000000000000000000000000000005`.
 
-### **NFT Token Prefixes** (First 128-bit ID)  
+### NFT Token Prefixes
+
+High 128-bit type ID, lower 128 bit unique token identifier.
 
 | Type Prefix (Hex) | Category       | Description                                 |
 |------------------|---------------|---------------------------------------------|
@@ -55,6 +59,24 @@ fn batch_mint(
   data: Span<felt252>,
 )
 ```
+
+## Asset directories
+
+Assets (images) should be provided for each token type as `.png` to support transparency if needed.
+
+### The directory structure should look like,
+
+`0x<higher_128_bits>`/`0x<lower_128_bits>`.png
+
+### For example,
+
+#### Image for fungible pistol ammo - ID `0x100`
+
+`0x0/0x100.png`
+
+#### Image for boots NFT - Type ID `0x2003`, unique ID `0x77`
+
+`0x2003/0x77.png`
 
 ## Further reading
 

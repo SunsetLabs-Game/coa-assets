@@ -55,3 +55,7 @@ fn batch_mint(
   data: Span<felt252>,
 )
 ```
+
+## Further reading
+
+https://docs.openzeppelin.com/contracts-cairo/0.20.0/api/erc1155

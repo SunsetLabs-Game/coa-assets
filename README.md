@@ -41,3 +41,17 @@ The main token contract is ERC1155. Here's a recommended standard,
 | `0x800000` - `0x8fffff` | Pets/Drones    | AI companions & robotic assistants |
 
 Total supply of all NFTs should be just `1`. The contract allows for flexibility, but let's adhere to the standards specced in this file.
+
+## Batch transactions
+
+Backend can batch the minting to assets to the players as to save on gas fees. Use the entrypoint below.
+
+```
+fn batch_mint(
+  ref self: ContractState,
+  account: ContractAddress,
+  token_ids: Span<u256>,
+  values: Span<u256>,
+  data: Span<felt252>,
+)
+```
